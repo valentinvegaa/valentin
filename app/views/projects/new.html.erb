@@ -1,0 +1,27 @@
+<h1>Project#new</h1>
+<p>Find me in app/views/project/new.html.erb</p>
+<%= form_for @project do |f| %>
+<p>
+	<%= f.label 'Cliente' %><br/>
+	<%= f.select("Cliente", Client.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => params[:client_id] }) %>
+</p>
+<p>
+	<%= f.label 'Nombre' %><br/>
+	<%= f.text_field :name %>
+</p>
+<p>
+	<%= f.label 'Fecha Inicio' %><br/>
+	<%= f.text_field :start_time %>
+</p>
+<p>
+	<%= f.label 'Fecha Termino' %><br/>
+	<%= f.text_field :end_time %>
+</p>
+<p>
+	<%= f.label 'Fecha Limite' %><br/>
+	<%= f.text_field :limit_time, DateTime.now %>
+</p>
+<p>
+	<%= f.submit "Agregar Proyecto" %>
+</p>
+<% end %>

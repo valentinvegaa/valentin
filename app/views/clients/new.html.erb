@@ -1,7 +1,18 @@
+<script>
+$('.datepicker').datepicker({
+	format: "dd/mm/yy",
+    todayBtn: "linked",
+    language: "es",
+    autoclose: true });
+</script>
 <%= form_for @client do |f| %>
 <p>
-	<%= f.label :name %><br/>
+	<%= f.label 'Nombre' %><br/>
 	<%= f.text_field :name %><br/>
+</p>
+<p>
+	<%= f.label 'Fecha de Ingreso de Cliente' %><br/>	
+	<%= f.text_field :since_date, :class => 'datepicker' %>
 </p>
 <p>
 	<%= f.submit "Agregar Cliente" %>

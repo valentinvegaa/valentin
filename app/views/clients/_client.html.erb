@@ -1,0 +1,13 @@
+<td>
+  <%= link_to client.name, client %>
+</td>
+<td>
+  <%= form_for(client) do |f| %>
+    <%= f.label 'Nombre' %>
+    <%= f.text_field :name%>
+    <%= f.submit 'Cambiar nombre', :class => 'button-xs' %>
+  <% end %>
+</td>
+<td>
+  <%= link_to("Borrar Cliente", client_path(client), :data => { :confirm => "Está seguro??" }, :method => :delete, :class => 'button-xs') %>
+</td>

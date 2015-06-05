@@ -1,2 +1,14 @@
 <h1>Client#index</h1>
 <p>Find me in app/views/client/index.html.erb</p>
+
+<div class="column">
+	<table class="table">
+		<tbody>
+		  <% @clients.each do |client| %>
+		    <tr>
+		      <%= render client %>
+		    </tr>
+		  <% end %>
+		</tbody>
+	</table>
+</div>

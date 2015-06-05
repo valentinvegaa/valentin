@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
   def index
     @clients=Client.all
   end
-
+ 
   def new
     @client=Client.new
   end
@@ -35,7 +35,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @clients=Client.find(params[:id])
+    @client=Client.find(params[:id])
   end
   def client_params
     params.require(:client).permit(:name)

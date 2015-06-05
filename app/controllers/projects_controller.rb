@@ -1,27 +1,33 @@
 class ProjectsController < ApplicationController
   def index
-    @projects=Projects.all
+    @projects=Project.all
   end
 
   def new
+    @project=Project.new
 
   end
 
   def create
-    @projects=Projects.create(project_params)
+    @project=Projects.create(project_params)
+    if @project 
+      redirect_to root_path, :notice=>"project "+@project.name+" created!"
+    else
+    end
   end
 
-  def destroy
+  def destroy 
   end
 
   def edit
   end
 
   def show
+    @projects=Projects.find(params[:id])
   end
   def update
   end
-  def category_params
-    
+  def project_params
+    params.require(:category).permit(:name,:start_time,:limit_time,:config)
   end
 end

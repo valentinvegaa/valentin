@@ -1,5 +1,6 @@
 <h3>Bienvenido :D</h3>
-<p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
+<p><%= link_to 'Usuarios:', users_path %> <%= User.count %> registrados</p>
+<p><%= link_to 'Clientes:', clients_path %> <%= Client.count %> registrados</p>
 <%if user_signed_in? %>
 <div role="tabpanel">
   <!-- Nav tabs -->

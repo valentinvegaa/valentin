@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.1'
+gem 'jquery-rails'
 gem "heroku"
 gem "cancan"
 gem 'jquery-ui-rails'
@@ -7,7 +8,6 @@ gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 group :development, :test do
@@ -15,7 +15,9 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass'
+gem 'bootstrap'
 gem 'devise'
 gem 'pg'
 gem 'puma'
