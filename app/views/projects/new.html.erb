@@ -1,25 +1,60 @@
+	<script>
+$('.datepicker').datepicker({
+	format: "dd/mm/yy",
+    todayBtn: "linked",
+    language: "es",
+    autoclose: true });
+</script>
 <h1>Project#new</h1>
 <p>Find me in app/views/project/new.html.erb</p>
 <%= form_for @project do |f| %>
 <p>
 	<%= f.label 'Cliente' %><br/>
-	<%= f.select("Cliente", Client.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => params[:client_id] }) %>
+	<%= f.select('client_id', Client.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => params[:client_id] }) %>
 </p>
 <p>
 	<%= f.label 'Nombre' %><br/>
 	<%= f.text_field :name %>
 </p>
+<div class="add_task"></div>
+
+<div class="tasks">
+	<p>
+	<%= f.fields_for :tasks do |c|%>
+		<%= f.label 'Nombre' %><br/>
+		<%= c.text_field :task_name%><br/>
+		<%= f.label 'Duracion' %><br/>
+		<%= c.text_field :task_duration%><br/>
+		<%= f.label 'Especialista' %><br/>
+		<%= c.text_field :task_speciality%><br/>
+		<%= f.label 'Duracion' %><br/>
+		<%= c.text_field :task_limit, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %><br/>
+	<%end%>
+</p>
+</div>
+
+<div class="add_sla_criteria"></div>
+
+<div class="asign_attendant"></div>
 <p>
 	<%= f.label 'Fecha Inicio' %><br/>
-	<%= f.text_field :start_time %>
+	<%= f.text_field :start_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker'  %>
 </p>
 <p>
 	<%= f.label 'Fecha Termino' %><br/>
-	<%= f.text_field :end_time %>
+	<%= f.text_field :end_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker'  %>
 </p>
 <p>
 	<%= f.label 'Fecha Limite' %><br/>
-	<%= f.text_field :limit_time, DateTime.now %>
+	<%= f.text_field :limit_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %>
+</p>
+<p>
+	<%= f.fields_for :config do |c|%>
+		<%= c.text_field :criterios%><br/>
+		<%= c.text_field :ponderadores%><br/>
+		<%= c.text_field :encargados%><br/>
+		<%= c.text_field :project_limit_date, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %><br/>
+	<%end%>
 </p>
 <p>
 	<%= f.submit "Agregar Proyecto" %>

@@ -9,25 +9,35 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project=Projects.create(project_params)
-    if @project 
+    params[:project][:config]=params[:project][:config].to_json
+    @project=Project.create(project_params)
+    if @project
       redirect_to root_path, :notice=>"project "+@project.name+" created!"
     else
     end
   end
 
-  def destroy 
+  def destroy
+    project = Project.find(params[:id])
+    project.destroy
+    redirect_to projects_path, :notice => "Project deleted."
   end
 
   def edit
   end
 
   def show
-    @projects=Projects.find(params[:id])
+    @project=Project.find(params[:id])
   end
   def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(project_params)
+      redirect_to projects_path, :notice => "Project updated."
+    else
+      redirect_to projects_path, :alert => "Unable to update project."
+    end
   end
   def project_params
-    params.require(:category).permit(:name,:start_time,:limit_time,:config)
+    params.require(:project).permit(:name,:client_id,:start_time,:limit_time,:config)
   end
 end
