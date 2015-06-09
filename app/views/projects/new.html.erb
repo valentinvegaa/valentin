@@ -16,26 +16,11 @@ $('.datepicker').datepicker({
 	<%= f.label 'Nombre' %><br/>
 	<%= f.text_field :name %>
 </p>
-<div class="add_task"></div>
-
-<div class="tasks">
-	<p>
-	<%= f.fields_for :tasks do |c|%>
-		<%= f.label 'Nombre' %><br/>
-		<%= c.text_field :task_name%><br/>
-		<%= f.label 'Duracion' %><br/>
-		<%= c.text_field :task_duration%><br/>
-		<%= f.label 'Especialista' %><br/>
-		<%= c.text_field :task_speciality%><br/>
-		<%= f.label 'Duracion' %><br/>
-		<%= c.text_field :task_limit, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %><br/>
+<p>
+	<%= f.fields_for :tasks do |builder|%>
+		<% render "task_fields", :f => builder %>
 	<%end%>
 </p>
-</div>
-
-<div class="add_sla_criteria"></div>
-
-<div class="asign_attendant"></div>
 <p>
 	<%= f.label 'Fecha Inicio' %><br/>
 	<%= f.text_field :start_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker'  %>
@@ -59,4 +44,5 @@ $('.datepicker').datepicker({
 <p>
 	<%= f.submit "Agregar Proyecto" %>
 </p>
+</div>
 <% end %>

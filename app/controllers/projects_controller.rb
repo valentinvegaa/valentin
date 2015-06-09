@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project=Project.new
-
+    task=@project.tasks.build
   end
 
   def create

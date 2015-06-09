@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-	belongs_to:role
-	has_many:activities, as: :manageable
+	belongs_to :role
+	has_many :activities, as: :manageable
 	enum role: [:user, :project_manager, :admin]
 	after_initialize :set_default_role, :if => :new_record?
 
