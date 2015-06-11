@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project=Project.new
-    task=@project.tasks.build
+    @project.tasks.build
   end
 
   def create
@@ -38,6 +38,6 @@ class ProjectsController < ApplicationController
     end
   end
   def project_params
-    params.require(:project).permit(:name,:client_id,:start_time,:limit_time,:config)
+    params.require(:project).permit(:name,:client_id,:start_time,:end_time, :limit_time,:config, tasks_attributes: [:id, :project_id,:name,:duration,:limit_date,:specialist])
   end
 end

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'projects/destroy'#done - unused
   get 'projects/edit'#done
   get 'projects/show'#done
-  
+
   get 'clients/index'#done
   get 'clients/new' #done
   get 'clients/create' #done - unused
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :users
   resources :clients
   resources :projects

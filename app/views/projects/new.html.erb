@@ -8,41 +8,44 @@ $('.datepicker').datepicker({
 <h1>Project#new</h1>
 <p>Find me in app/views/project/new.html.erb</p>
 <%= form_for @project do |f| %>
-<p>
-	<%= f.label 'Cliente' %><br/>
-	<%= f.select('client_id', Client.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => params[:client_id] }) %>
-</p>
-<p>
-	<%= f.label 'Nombre' %><br/>
-	<%= f.text_field :name %>
-</p>
-<p>
-	<%= f.fields_for :tasks do |builder|%>
-		<% render "task_fields", :f => builder %>
-	<%end%>
-</p>
-<p>
-	<%= f.label 'Fecha Inicio' %><br/>
-	<%= f.text_field :start_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker'  %>
-</p>
-<p>
-	<%= f.label 'Fecha Termino' %><br/>
-	<%= f.text_field :end_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker'  %>
-</p>
-<p>
-	<%= f.label 'Fecha Limite' %><br/>
-	<%= f.text_field :limit_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %>
-</p>
-<p>
-	<%= f.fields_for :config do |c|%>
-		<%= c.text_field :criterios%><br/>
-		<%= c.text_field :ponderadores%><br/>
-		<%= c.text_field :encargados%><br/>
-		<%= c.text_field :project_limit_date, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %><br/>
-	<%end%>
-</p>
-<p>
-	<%= f.submit "Agregar Proyecto" %>
-</p>
+<div class="panel panel-primary">
+	<p>
+		<%= f.label 'Cliente' %><br/>
+		<%= f.select('client_id', Client.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true, :selected => params[:client_id] }) %>
+	</p>
+	<p>
+		<%= f.label 'Nombre' %><br/>
+		<%= f.text_field :name %>
+	</p>
+	<div class="panel-body">
+		<p>
+			<%= f.fields_for :tasks do |builder|%>
+				<% render "task_fields", :f => builder %>
+			<%end%>
+		</p>
+	</div>
+	<p>
+		<%= f.label 'Fecha Inicio' %><br/>
+		<%= f.text_field :start_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker'  %>
+	</p>
+	<p>
+		<%= f.label 'Fecha Termino' %><br/>
+		<%= f.text_field :end_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker'  %>
+	</p>
+	<p>
+		<%= f.label 'Fecha Limite' %><br/>
+		<%= f.text_field :limit_time, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %>
+	</p>
+	<p>
+		<%= f.fields_for :config do |c|%>
+			<%= c.text_field :criterios%><br/>
+			<%= c.text_field :ponderadores%><br/>
+			<%= c.text_field :encargados%><br/>
+			<%= c.text_field :project_limit_date, :placeholder=>'dd/mm/yyyy', :class => 'datepicker' %><br/>
+		<%end%>
+	</p>
+	<p>
+		<%= f.submit "Agregar Proyecto" %>
+	</p>
 </div>
 <% end %>
